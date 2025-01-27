@@ -132,6 +132,7 @@ public class Main {
         List<Emergencia> pendientes = sistema.getEmergenciasPendientes();
         if (pendientes.isEmpty()) {
             System.out.println("No hay emergencias pendientes.");
+            System.out.println("Sistema preparado para siguiente ciclo.");
             return;
         }
 
