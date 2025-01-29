@@ -3,7 +3,7 @@ package Proyecto2.view;
 import java.util.List;
 import java.util.Scanner;
 
-import Proyecto2.controller.SistemaEmergencias;
+import Proyecto2.controller.Proyecto2.SistemaEmergencias;
 import Proyecto2.model.Emergencia;
 import Proyecto2.model.factory.FactoryEmergencias;
 import Proyecto2.model.services.Ambulancia;
