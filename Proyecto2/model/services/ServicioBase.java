@@ -1,7 +1,7 @@
-package Clase_08.model.services;
+package Proyecto2.model.services;
 
-import Clase_08.model.Emergencia;
-import Clase_08.model.interfaces.IServicioEmergencia;
+import Proyecto2.model.Emergencia;
+import Proyecto2.model.interfaces.IServicioEmergencia;
 
 public abstract class ServicioBase implements IServicioEmergencia {
     private String id;

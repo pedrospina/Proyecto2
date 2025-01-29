@@ -1,6 +1,6 @@
-package Clase_08.model.interfaces;
+package Proyecto2.model.interfaces;
 
-import Clase_08.model.Emergencia;
+import Proyecto2.model.Emergencia;
 
 public interface IServicioEmergencia {
     String getId();

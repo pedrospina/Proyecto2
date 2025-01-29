@@ -1,6 +1,6 @@
-package Clase_08.model;
+package Proyecto2.model;
 
-import Clase_08.utils.NivelGravedad;
+import Proyecto2.utils.NivelGravedad;
 
 public class Robo extends Emergencia {
     public Robo(String ubicacion, NivelGravedad nivelGravedad, int tiempoRespuesta) {

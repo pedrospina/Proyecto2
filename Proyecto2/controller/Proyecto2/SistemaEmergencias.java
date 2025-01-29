@@ -1,22 +1,22 @@
-package Clase_08.controller;
+package Proyecto2.controller.Proyecto2;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import Clase_08.model.AccidenteVehicular;
-import Clase_08.model.Emergencia;
-import Clase_08.model.Incendio;
-import Clase_08.model.Robo;
-import Clase_08.model.interfaces.IServicioEmergencia;
-import Clase_08.model.observer.ObserverEmergencias;
-import Clase_08.model.observer.SujetoEmergencias;
-import Clase_08.model.services.Ambulancia;
-import Clase_08.model.services.Bomberos;
-import Clase_08.model.services.Policia;
-import Clase_08.model.strategy.StrategyPrioridad;
-import Clase_08.model.strategy.StrategyPrioridadGravedad;
 
+import Proyecto2.model.AccidenteVehicular;
+import Proyecto2.model.Emergencia;
+import Proyecto2.model.Incendio;
+import Proyecto2.model.Robo;
+import Proyecto2.model.interfaces.IServicioEmergencia;
+import Proyecto2.model.observer.ObserverEmergencias;
+import Proyecto2.model.observer.SujetoEmergencias;
+import Proyecto2.model.services.Ambulancia;
+import Proyecto2.model.services.Bomberos;
+import Proyecto2.model.services.Policia;
+import Proyecto2.model.strategy.StrategyPrioridad;
+import Proyecto2.model.strategy.StrategyPrioridadGravedad;
 public class SistemaEmergencias implements SujetoEmergencias {
 
     private static SistemaEmergencias instancia;

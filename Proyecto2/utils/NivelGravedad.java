@@ -1,4 +1,4 @@
-package Clase_08.utils;
+package Proyecto2.utils;
 
 public enum NivelGravedad {
     ALTO,

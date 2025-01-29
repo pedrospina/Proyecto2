@@ -1,6 +1,6 @@
-package Clase_08.model.strategy;
+package Proyecto2.model.strategy;
 
-import Clase_08.model.Emergencia;
+import Proyecto2.model.Emergencia;
 
 public interface StrategyPrioridad {
     int calcularPrioridad(Emergencia emergencia);
