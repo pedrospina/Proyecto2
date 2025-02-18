@@ -1,6 +1,6 @@
-package Clase_08.model;
+package Proyecto2.model;
 
-import Clase_08.utils.NivelGravedad;
+import Proyecto2.utils.NivelGravedad;
 
 public class AccidenteVehicular extends Emergencia {
     public AccidenteVehicular(String ubicacion, NivelGravedad nivelGravedad, int tiempoRespuesta) {

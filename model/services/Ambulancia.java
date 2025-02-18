@@ -1,6 +1,6 @@
-package Clase_08.model.services;
+package Proyecto2.model.services;
 
-import Clase_08.model.Emergencia;
+import Proyecto2.model.Emergencia;
 
 public class Ambulancia extends ServicioBase {
 

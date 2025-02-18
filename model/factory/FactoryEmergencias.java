@@ -1,11 +1,11 @@
-package Clase_08.model.factory;
+package Proyecto2.model.factory;
 
-import Clase_08.model.AccidenteVehicular;
-import Clase_08.model.Incendio;
-import Clase_08.model.Emergencia;
-import Clase_08.model.Robo;
-import Clase_08.utils.NivelGravedad;
-import Clase_08.utils.TipoEmergencia;
+import Proyecto2.model.AccidenteVehicular;
+import Proyecto2.model.Incendio;
+import Proyecto2.model.Emergencia;
+import Proyecto2.model.Robo;
+import Proyecto2.utils.NivelGravedad;
+import Proyecto2.utils.TipoEmergencia;
 
 public class FactoryEmergencias {
 

@@ -1,6 +1,6 @@
-package Clase_08.model.observer;
+package Proyecto2.model.observer;
 
-import Clase_08.model.Emergencia;
+import Proyecto2.model.Emergencia;
 
 public interface SujetoEmergencias {
     void agregarObserver(ObserverEmergencias observerEmergencias);
