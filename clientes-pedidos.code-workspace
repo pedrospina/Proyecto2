@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "../../../clientes-pedidos"
+		},
+		{
+			"name": "Modulo3",
+			"path": "../../.."
+		},
+		{
+			"path": "../../../demo-debug"
+		}
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "interactive"
+	}
+}
