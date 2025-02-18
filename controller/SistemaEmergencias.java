@@ -16,6 +16,7 @@ import Clase_08.model.services.Bomberos;
 import Clase_08.model.services.Policia;
 import Clase_08.model.strategy.StrategyPrioridad;
 import Clase_08.model.strategy.StrategyPrioridadGravedad;
+import Clase_08.controller.SistemaEmergencias;
 
 public class SistemaEmergencias implements SujetoEmergencias {
 
@@ -44,6 +45,8 @@ public class SistemaEmergencias implements SujetoEmergencias {
         }
         return instancia;
     }
+
+    
 
     @Override
     public void agregarObserver(ObserverEmergencias observerEmergencias) {
