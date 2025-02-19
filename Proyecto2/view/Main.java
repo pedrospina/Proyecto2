@@ -1,9 +1,8 @@
 package Proyecto2.view;
 
-import java.util.List;
-import java.util.Scanner;
 
-import Proyecto2.controller.Proyecto2.SistemaEmergencias;
+
+
 import Proyecto2.model.Emergencia;
 import Proyecto2.model.factory.FactoryEmergencias;
 import Proyecto2.model.services.Ambulancia;
@@ -11,6 +10,11 @@ import Proyecto2.model.services.Bomberos;
 import Proyecto2.model.services.Policia;
 import Proyecto2.utils.NivelGravedad;
 import Proyecto2.utils.TipoEmergencia;
+import Proyecto2.controller.Proyecto2.SistemaEmergencias;
+
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class Main {
 
@@ -20,156 +24,155 @@ public class Main {
 
     public static void main(String[] args) {
 
-        SistemaEmergencias sistema = SistemaEmergencias.getInstancia();
-
-        inicializarRecursosDemo(sistema);
-
-        Scanner sc = new Scanner(System.in);
-        boolean salir = false;
-
-        while (!salir) {
-
-            String title = "SISTEMA DE EMERGENCIAS";
         
-      // Imprimir el logo de "Sistemas de Emergencias" usando caracteres especiales
-       // Imprimir cada línea del logo por separado 
-       System.out.printf("%s==============================================================%s%n", BLUE, RESET);
-       System.out.printf("%s=      _____ _        _   _             _                    =%s%n", YELLOW, RESET);
-       System.out.printf("%s=     / ____| |      | | (_)           | |                   =%s%n", YELLOW, RESET);
-       System.out.printf("%s=    | (___ | |_ __ _| |_ _  ___  _ __| |_ ___ _ __ ___      =%s%n", YELLOW, RESET);
-       System.out.printf("%s=    \\___ \\| __/ _` | __| |/ _ \\| '__| __/ _ \\ '__/ _ \\      =%s%n", YELLOW, RESET);
-       System.out.printf("%s=     ____) | || (_| | |_| | (_) | |  | ||  __/ | |  __/     =%s%n", YELLOW, RESET);
-       System.out.printf("%s=    |_____/ \\__\\__,_|\\__|_|\\___/|_|   \\__\\___|_|  \\___|     =%s%n", YELLOW, RESET);
-       System.out.printf("%s=                                                            =%s%n", YELLOW, RESET);
-       System.out.printf("%s==============================================================%s%n", BLUE, RESET);
-       System.out.printf("%s                   SISTEMA DE EMERGENCIAS      %s%n", YELLOW, RESET);
-       System.out.printf("%s==============================================================%s%n", BLUE, RESET);
 
-            
-      System.out.println("1. Registrar una nueva emergencia");
-      System.out.println("2. Ver estado de recursos disponibles");
-      System.out.println("3. Atender una emergencia");
-      System.out.println("4. Mostrar estadísticas del día");
-      System.out.println("5. Finalizar jornada (cerrar sistema)");
-      System.out.print("Seleccione una opción: ");
 
-            int opcion = 0;
+        Scanner scanner = new Scanner(System.in);
+        boolean entradaValida = true;
+        boolean emergenciaRegistrada = false;
+        boolean nivelGravedadValido = false;
+        var opcion = 0;
+        var tipoEmergencia = 0;
+        var nivelGravedadInput = 0;
+
+        // Instancia del sistema de emergencias
+        SistemaEmergencias sistemaEmergencias = SistemaEmergencias.getInstancia();
+        
+
+        // Crear recursos y registrarlos en el sistema
+        Ambulancia ambulancia = new Ambulancia("A1", 5, 100);
+        Bomberos bomberos = new Bomberos("B1", 10, 150);
+        Policia policia = new Policia("P1", 8, 80);
+
+        sistemaEmergencias.registrarRecurso(ambulancia);
+        sistemaEmergencias.registrarRecurso(bomberos);
+        sistemaEmergencias.registrarRecurso(policia);
+
+        // Menú de interacción
+        while (entradaValida) {
             try {
-                opcion = Integer.parseInt(sc.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.println("Opción inválida. Intente de nuevo.");
+            System.out.println("\n=== MENÚ ===");
+            System.out.println("1. Registrar emergencia");
+            System.out.println("2. Atender emergencia");
+            System.out.println("3. Ver estado de recursos");
+            System.out.println("4. Salir");
+            System.out.print("Elige una opcion: ");
+            
+            opcion = scanner.nextInt();
+            
+            if (opcion < 1 || opcion > 4) {
+                System.out.println("Opción inválida. Por favor, ingresa un número entre 1 y 4.");
                 continue;
+                
             }
 
             switch (opcion) {
+                
                 case 1:
-                    registrarEmergenciaMenu(sistema, sc);
+                    // Registrar emergencia
+                     while (!emergenciaRegistrada) {
+                        try {
+
+                            System.out.println("\n--- Registrar Emergencia ---");
+                            System.out.println("\nSelecciona el tipo de emergencia:");
+                            System.out.println("1. Accidente Vehicular");
+                            System.out.println("2. Incendio");
+                            System.out.println("3. Robo");
+                            System.out.print("Elige una opción: ");
+                            
+                            
+                            tipoEmergencia = scanner.nextInt();
+                            
+                            if (tipoEmergencia < 1 || tipoEmergencia > 3) {
+                                System.out.println("Opción inválida. Por favor, ingresa un numero entre 1 y 3."); 
+                                continue;  
+                                
+                            }
+          
+                            scanner.nextLine(); // Limpiar buffer
+                            System.out.print("Ubicación de la emergencia: ");
+                            String ubicacion = scanner.nextLine();
+
+                        while (!nivelGravedadValido) {
+                                System.out.print("Nivel de gravedad (1: Bajo, 2: Medio, 3: Alto): ");
+
+                                try {
+                                    nivelGravedadInput = scanner.nextInt();
+
+                                    if (nivelGravedadInput < 1 || nivelGravedadInput > 3) {
+                                        System.out.println("Opción inválida. Por favor, ingresa un número entre 1 y 3.");  
+                                        continue;        
+                                    }
+                                    nivelGravedadValido = true;
+                                } catch (InputMismatchException e) {
+                                System.out.println("Opción inválida. Por favor, ingresa un número.");
+                                scanner.nextLine();  // Limpiar buffer
+                                }
+                            }
+                        
+                            
+                                    NivelGravedad nivelGravedad = NivelGravedad.values()[nivelGravedadInput - 1];
+                                    System.out.print("Tiempo estimado de respuesta (en minutos): ");
+                                    int tiempoRespuesta = scanner.nextInt();
+                                    
+                                    Emergencia emergencia = FactoryEmergencias.crearEmergencia( 
+                                            TipoEmergencia.values()[tipoEmergencia - 1],
+                                            ubicacion,
+                                            nivelGravedad,
+                                            tiempoRespuesta
+                                    );
+                                    
+                                    // Registrar la emergencia en el sistema
+                                sistemaEmergencias.registrarNuevaEmergencia(emergencia);
+                                System.out.println("Emergencia registrada exitosamente.");
+                                emergenciaRegistrada = false;
+                                break;     
+                                    
+                                } catch (InputMismatchException e) {
+                                System.out.println("Opción inválida. Por favor, ingresa un número.");
+                                scanner.nextLine();  // Limpiar buffer
+                                }
+                            } 
+
+                    case 2:   // antender emergencia
+
+                    if (sistemaEmergencias.getEmergenciasPendientes().isEmpty()) {
+                        System.out.println("No hay emergencias pendientes para atender.");
+                    } else {
+                        // Asignar recursos automáticamente a las emergencias pendientes
+                        for (Emergencia emergencia : sistemaEmergencias.getEmergenciasPendientes()) {
+                            sistemaEmergencias.asignarRecursosAEmergencia(emergencia);
+                        }
+                    }
                     break;
-                case 2:
-                    sistema.mostrarEstadoRecursos();
-                    break;
+
                 case 3:
-                    atenderEmergenciaMenu(sistema, sc);
+                    // Ver estado de los recursos
+                    sistemaEmergencias.mostrarEstadoRecursos();
                     break;
+
                 case 4:
-                    sistema.mostrarEstadisticas();
-                    break;
-                case 5:
-                    System.out.println("Finalizando jornada...");
-                    sistema.finalizarJornada();
-                    salir = true;
-                    break;
-                default:
-                    System.out.println("Opción inválida. Intente de nuevo.");
+                    System.out.println("¡Hasta luego!");
+                    scanner.close();
+                    return;
+            
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Opción inválida. Por favor, ingresa un número.");
+                scanner.nextLine();  // Limpiar buffer
             }
         }
-        sc.close();
     }
-
-    private static void inicializarRecursosDemo(SistemaEmergencias sistema) {
-        sistema.registrarRecurso(new Bomberos("Camión-B1", 5, 100));
-        sistema.registrarRecurso(new Bomberos("Furgoneta-B2", 3, 80));
-        sistema.registrarRecurso(new Ambulancia("AMB_Basica-A1", 2, 100));
-        sistema.registrarRecurso(new Ambulancia("AMB_Medicalizada-A2", 2, 60));
-        sistema.registrarRecurso(new Policia("Patrulla-P1", 4, 100));
-        sistema.registrarRecurso(new Policia("Patrulla-P2", 2, 70));
-    }
-
-    private static void registrarEmergenciaMenu(SistemaEmergencias sistema, Scanner sc) {
-        System.out.println("\n=== REGISTRAR NUEVA EMERGENCIA ===");
-        System.out.println("1. Incendio");
-        System.out.println("2. Accidente Vehicular");
-        System.out.println("3. Robo");
-        System.out.print("Seleccione el tipo: ");
-        TipoEmergencia tipo = null;
-        switch (Integer.parseInt(sc.nextLine())) {
-            case 1:
-                tipo = TipoEmergencia.INCENDIO;
-                break;
-            case 2:
-                tipo = TipoEmergencia.ACCIDENTE_VEHICULAR;
-                break;
-            case 3:
-                tipo = TipoEmergencia.ROBO;
-                break;
-        }
-
-        System.out
-                .print("Ingrese ubicación (ejemplo: Zona-Norte,Zona-Sur, Zona-Centro, Zona-Oriente, Zona-Occidente): ");
-        String ubicacion = sc.nextLine();
-
-        System.out.print("Ingrese nivel de gravedad (1. bajo, 2. medio, 3. alto): ");
-
-        NivelGravedad nivelGravedad = null;
-        switch (Integer.parseInt(sc.nextLine())) {
-            case 1:
-                nivelGravedad = NivelGravedad.BAJO;
-                break;
-            case 2:
-                nivelGravedad = NivelGravedad.MEDIO;
-                break;
-            case 3:
-                nivelGravedad = NivelGravedad.ALTO;
-                break;
-            default:
-                nivelGravedad = NivelGravedad.BAJO;
-                break;
-
-        }
-
-        System.out.print("Ingrese tiempo estimado de atención (minutos): ");
-        int tiempoEstimado = Integer.parseInt(sc.nextLine());
-
-        Emergencia nueva = FactoryEmergencias.crearEmergencia(tipo, ubicacion, nivelGravedad, tiempoEstimado);
-        if (nueva == null) {
-            System.out.println("Tipo de emergencia inválido.");
-            return;
-        }
-
-        sistema.registrarNuevaEmergencia(nueva);
-        System.out.println("Emergencia registrada: " + nueva);
-    }
-
-    private static void atenderEmergenciaMenu(SistemaEmergencias sistema, Scanner sc) {
-        List<Emergencia> pendientes = sistema.getEmergenciasPendientes();
-        if (pendientes.isEmpty()) {
-            System.out.println("No hay emergencias pendientes.");
-            return;
-        }
-
-        System.out.println("\n=== ATENDER EMERGENCIA ===");
-        for (int i = 0; i < pendientes.size(); i++) {
-            System.out.println((i + 1) + ". " + pendientes.get(i).getDescripcion());
-        }
-        System.out.print("Seleccione el número de la emergencia a atender: ");
-        int indice = Integer.parseInt(sc.nextLine()) - 1;
-        if (indice < 0 || indice >= pendientes.size()) {
-            System.out.println("Índice inválido.");
-            return;
-        }
-
-        Emergencia emergencia = pendientes.get(indice);
-        sistema.asignarRecursosAEmergencia(emergencia);
-        sistema.atenderEmergencia(emergencia);
-    }
+            
+         
 }
+            
+
+
+
+ 
+            
+        
+    
+
+
