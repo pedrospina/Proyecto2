@@ -13,6 +13,11 @@ import Proyecto2.utils.NivelGravedad;
 import Proyecto2.utils.TipoEmergencia;
 
 public class Main {
+
+     static final String BLUE = "\u001B[34m";    // Color rojo
+     static final String YELLOW = "\u001B[33m";  // Color verde
+     static final String RESET = "\u001B[0m";   // Reset de color
+
     public static void main(String[] args) {
 
         SistemaEmergencias sistema = SistemaEmergencias.getInstancia();
@@ -23,13 +28,30 @@ public class Main {
         boolean salir = false;
 
         while (!salir) {
-            System.out.println("\n=== SISTEMA DE GESTIÓN DE EMERGENCIAS ===");
-            System.out.println("1. Registrar una nueva emergencia");
-            System.out.println("2. Ver estado de recursos disponibles");
-            System.out.println("3. Atender una emergencia");
-            System.out.println("4. Mostrar estadísticas del día");
-            System.out.println("5. Finalizar jornada (cerrar sistema)");
-            System.out.print("Seleccione una opción: ");
+
+            String title = "SISTEMA DE EMERGENCIAS";
+        
+      // Imprimir el logo de "Sistemas de Emergencias" usando caracteres especiales
+       // Imprimir cada línea del logo por separado 
+       System.out.printf("%s==============================================================%s%n", BLUE, RESET);
+       System.out.printf("%s=      _____ _        _   _             _                    =%s%n", YELLOW, RESET);
+       System.out.printf("%s=     / ____| |      | | (_)           | |                   =%s%n", YELLOW, RESET);
+       System.out.printf("%s=    | (___ | |_ __ _| |_ _  ___  _ __| |_ ___ _ __ ___      =%s%n", YELLOW, RESET);
+       System.out.printf("%s=    \\___ \\| __/ _` | __| |/ _ \\| '__| __/ _ \\ '__/ _ \\      =%s%n", YELLOW, RESET);
+       System.out.printf("%s=     ____) | || (_| | |_| | (_) | |  | ||  __/ | |  __/     =%s%n", YELLOW, RESET);
+       System.out.printf("%s=    |_____/ \\__\\__,_|\\__|_|\\___/|_|   \\__\\___|_|  \\___|     =%s%n", YELLOW, RESET);
+       System.out.printf("%s=                                                            =%s%n", YELLOW, RESET);
+       System.out.printf("%s==============================================================%s%n", BLUE, RESET);
+       System.out.printf("%s                   SISTEMA DE EMERGENCIAS      %s%n", YELLOW, RESET);
+       System.out.printf("%s==============================================================%s%n", BLUE, RESET);
+
+            
+      System.out.println("1. Registrar una nueva emergencia");
+      System.out.println("2. Ver estado de recursos disponibles");
+      System.out.println("3. Atender una emergencia");
+      System.out.println("4. Mostrar estadísticas del día");
+      System.out.println("5. Finalizar jornada (cerrar sistema)");
+      System.out.print("Seleccione una opción: ");
 
             int opcion = 0;
             try {
@@ -65,12 +87,12 @@ public class Main {
     }
 
     private static void inicializarRecursosDemo(SistemaEmergencias sistema) {
-        sistema.registrarRecurso(new Bomberos("Unidad-B1", 5, 100));
-        sistema.registrarRecurso(new Bomberos("Unidad-B2", 3, 80));
-        sistema.registrarRecurso(new Ambulancia("Unidad-A1", 2, 100));
-        sistema.registrarRecurso(new Ambulancia("Unidad-A2", 2, 60));
-        sistema.registrarRecurso(new Policia("Unidad-P1", 4, 100));
-        sistema.registrarRecurso(new Policia("Unidad-P2", 2, 70));
+        sistema.registrarRecurso(new Bomberos("Camión-B1", 5, 100));
+        sistema.registrarRecurso(new Bomberos("Furgoneta-B2", 3, 80));
+        sistema.registrarRecurso(new Ambulancia("AMB_Basica-A1", 2, 100));
+        sistema.registrarRecurso(new Ambulancia("AMB_Medicalizada-A2", 2, 60));
+        sistema.registrarRecurso(new Policia("Patrulla-P1", 4, 100));
+        sistema.registrarRecurso(new Policia("Patrulla-P2", 2, 70));
     }
 
     private static void registrarEmergenciaMenu(SistemaEmergencias sistema, Scanner sc) {
