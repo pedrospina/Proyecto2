@@ -120,7 +120,7 @@ public class Main {
                                     // Registrar la emergencia en el sistema
                                 sistemaEmergencias.registrarNuevaEmergencia(emergencia);
                                 System.out.println("Emergencia registrada exitosamente.");
-                                emergenciaRegistrada = true;
+                                emergenciaRegistrada = false;
                                 break;     
                                     
                                 } catch (InputMismatchException e) {
