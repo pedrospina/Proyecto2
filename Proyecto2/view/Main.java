@@ -51,6 +51,23 @@ public class Main {
         // Menú de interacción
         while (entradaValida) {
             try {
+            
+            String title = "SISTEMA DE EMERGENCIAS";
+        
+      // Imprimir el logo de "Sistemas de Emergencias" usando caracteres especiales
+       // Imprimir cada línea del logo por separado 
+       System.out.printf("%s==============================================================%s%n", BLUE, RESET);
+       System.out.printf("%s=      _____ _        _   _             _                    =%s%n", YELLOW, RESET);
+       System.out.printf("%s=     / ____| |      | | (_)           | |                   =%s%n", YELLOW, RESET);
+       System.out.printf("%s=    | (___ | |_ __ _| |_ _  ___  _ __| |_ ___ _ __ ___      =%s%n", YELLOW, RESET);
+       System.out.printf("%s=    \\___ \\| __/ _` | __| |/ _ \\| '__| __/ _ \\ '__/ _ \\      =%s%n", YELLOW, RESET);
+       System.out.printf("%s=     ____) | || (_| | |_| | (_) | |  | ||  __/ | |  __/     =%s%n", YELLOW, RESET);
+       System.out.printf("%s=    |_____/ \\__\\__,_|\\__|_|\\___/|_|   \\__\\___|_|  \\___|     =%s%n", YELLOW, RESET);
+       System.out.printf("%s=                                                            =%s%n", YELLOW, RESET);
+       System.out.printf("%s==============================================================%s%n", BLUE, RESET);
+       System.out.printf("%s                   SISTEMA DE EMERGENCIAS      %s%n", YELLOW, RESET);
+       System.out.printf("%s==============================================================%s%n", BLUE, RESET);
+     
             System.out.println("\n=== MENÚ ===");
             System.out.println("1. Registrar emergencia");
             System.out.println("2. Atender emergencia");
