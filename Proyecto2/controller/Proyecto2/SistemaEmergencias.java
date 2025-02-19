@@ -45,6 +45,8 @@ public class SistemaEmergencias implements SujetoEmergencias {
         return instancia;
     }
 
+    
+
     @Override
     public void agregarObserver(ObserverEmergencias observerEmergencias) {
         observadores.add(observerEmergencias);
